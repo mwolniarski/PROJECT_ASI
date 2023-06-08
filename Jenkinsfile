@@ -6,7 +6,7 @@ pipeline {
                 checkout scm
             }
         }
-        stage('Remove container') {
+        stage('Remove container if exists') {
             steps {
                 script {
                     sh 'docker rm -f kedro_docker'
@@ -27,7 +27,7 @@ pipeline {
                 }
             }
         }
-        stage('Remove container') {
+        stage('Cleanup') {
             steps {
                 script {
                     sh 'docker rm -f kedro_docker'
