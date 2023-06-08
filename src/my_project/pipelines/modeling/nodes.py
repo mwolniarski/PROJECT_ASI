@@ -19,6 +19,7 @@ import joblib
 import wandb
 import logging
 import mlflow
+import time
 
 def prepare_data_for_modeling(df):
     # Suppress "a copy of slice from a DataFrame is being made" warning
@@ -89,3 +90,6 @@ def evaluate_model(model, X_test, y_test):
     logger = logging.getLogger(__name__)
     logger.info("Model has an accuracy of %.3f on test data.", accuracy)
     logger.info("Model has an ROC AUC of %.3f on test data.", roc_auc)
+
+    # Delay to allow Prometheus to scrape the W&B logs
+    time.sleep(5)
