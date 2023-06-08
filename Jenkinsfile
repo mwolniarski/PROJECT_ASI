@@ -27,12 +27,5 @@ pipeline {
                 }
             }
         }
-        stage('Cleanup') {
-            steps {
-                script {
-                    sh 'docker rm kedro_docker'
-                }
-            }
-        }
     }
 }
