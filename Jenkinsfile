@@ -16,7 +16,7 @@ pipeline {
         stage('Run Docker Container') {
             steps {
                 script {
-                    docker.image('project_asi').run('-d --network=project_asi --name=kedro')
+                    docker.image('project_asi').run('-d --network=project_asi')
                 }
             }
         }
