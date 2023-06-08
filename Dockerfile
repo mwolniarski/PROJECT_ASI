@@ -6,6 +6,7 @@ COPY src/requirements.txt /tmp/requirements.txt
 RUN pip install --no-cache -r /tmp/requirements.txt && rm -f /tmp/requirements.txt
 RUN pip install wandb
 RUN pip install -U scikit-learn
+RUN pip install wandb mlflow
 
 ENV ANDB_MODE=offline
 
