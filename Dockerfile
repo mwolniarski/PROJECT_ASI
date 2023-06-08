@@ -8,6 +8,7 @@ RUN pip install wandb
 RUN pip install -U scikit-learn
 RUN pip install wandb mlflow
 RUN pip install --upgrade kedro-mlflow
+RUN apt-get update && get upgrade -y && get install -y git
 
 ENV WANDB_MODE=offline
 
