@@ -12,7 +12,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, roc_auc_score
 from sklearn import metrics
-
+from prometheus_client import start_http_server, Gauge
 from sklearn.preprocessing import MinMaxScaler
 
 import joblib
@@ -21,6 +21,10 @@ import logging
 import mlflow
 import time
 
+# Initialize Prometheus metrics
+start_http_server(8000)
+roc_auc_metric = Gauge('wandb_roc_auc', 'ROC AUC')
+accuracy_metric = Gauge('wandb_accuracy', 'Accuracy metric from Wandb')
 def prepare_data_for_modeling(df):
     # Suppress "a copy of slice from a DataFrame is being made" warning
     pd.options.mode.chained_assignment = None
@@ -45,8 +49,7 @@ def split_data(df):
 def train_model(X_train, y_train):    
     pd.options.mode.chained_assignment = None
 
-    wandb.init(project="Heart failure", mode='offline')
-    
+    wandb.init(project="Heart failure", mode='offline', name='heart-failure')
     # n_estimators = wandb.config.n_estimators
     # max_depth = wandb.config.max_depth
     n_estimators = 50
@@ -82,7 +85,9 @@ def evaluate_model(model, X_test, y_test):
 
     mlflow.log_metric("accuracy", accuracy)
     mlflow.log_metric("roc auc", roc_auc)
-    wandb.log({"ROC AUC": roc_auc})
+    roc_auc_metric.set(roc_auc)
+    accuracy_metric.set(accuracy)
+    wandb.log({"ROC_AUC": roc_auc})
     wandb.log({"Accuracy": accuracy})
     print('ROC AUC: %.3f' % roc_auc)
     print('Accuracy: %.3f' % accuracy)
