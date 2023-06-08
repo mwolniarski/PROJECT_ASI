@@ -9,7 +9,7 @@ pipeline {
         stage('Remove container') {
             steps {
                 script {
-                    sh 'docker rm -f kedro-docker'
+                    sh 'docker rm -f kedro_docker'
                 }
             }
         }
@@ -24,6 +24,13 @@ pipeline {
             steps {
                 script {
                     docker.image('project_asi').run('--name=kedro_docker --network=project_asi -v wandb_logs:/home/kedro_docker/wandb -v mlflow_artifact:/home/kedro_docker/mlruns')
+                }
+            }
+        }
+        stage('Remove container') {
+            steps {
+                script {
+                    sh 'docker rm -f kedro_docker'
                 }
             }
         }
