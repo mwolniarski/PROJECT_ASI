@@ -23,7 +23,7 @@ pipeline {
         stage('Remove container') {
             steps {
                 script {
-                    dockerContainerRemove(container: 'project_asi')
+                    sh 'docker rm -f project_asi'
                 }
             }
         }
