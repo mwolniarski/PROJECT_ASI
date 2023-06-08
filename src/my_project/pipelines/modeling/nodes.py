@@ -59,8 +59,8 @@ def evaluate_model(model, X_test, y_test):
     labels = y_test.unique()
     y_pred = model.predict(X_test)
     y_probas = model.predict_proba(X_test)[:,1]
-    
 
+    wandb.init(project="Heart failure", mode='offline')
     table=wandb.Table(data=X_test, columns=X_test.columns)
     wandb.log({"X_test": table})
     
