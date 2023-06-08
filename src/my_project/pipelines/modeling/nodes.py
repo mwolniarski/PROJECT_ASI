@@ -44,7 +44,7 @@ def split_data(df):
 def train_model(X_train, y_train):    
     pd.options.mode.chained_assignment = None
 
-    wandb.init(project="Heart failure")
+    wandb.init(project="Heart failure", mode='offline')
     
     # n_estimators = wandb.config.n_estimators
     # max_depth = wandb.config.max_depth
