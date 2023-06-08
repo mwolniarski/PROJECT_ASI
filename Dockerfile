@@ -9,7 +9,7 @@ RUN pip install -U scikit-learn
 RUN pip install wandb mlflow
 RUN pip install --upgrade kedro-mlflow
 
-ENV ANDB_MODE=offline
+ENV WANDB_MODE=offline
 
 # add kedro user
 ARG KEDRO_UID=999
