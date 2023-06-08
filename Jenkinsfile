@@ -16,7 +16,9 @@ pipeline {
         stage('Run Docker Container') {
             steps {
                 script {
-                    docker.image('project_asi').run()
+                    def container = docker.image('project_asi').run()
+                    def containerIP = sh(script: "docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' ${container.id}", returnStdout: true).trim()
+                    sh "docker exec -it inny_kontener ping ${containerIP}"
                 }
             }
         }
