@@ -16,9 +16,7 @@ pipeline {
         stage('Run Docker Container') {
             steps {
                 script {
-                    def container = docker.image('project_asi').run()
-                    def containerIP = sh(script: "docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' ${container.id}", returnStdout: true).trim()
-                    sh "docker exec vigilant_lichterman ping ${containerIP}"
+                    docker.image('project_asi').run('-d --link 35ca663b3a1ecd292b6d226a637218f5cca556d1b37fece2cf2fc2b42d8c49cb:mlflow')
                 }
             }
         }
