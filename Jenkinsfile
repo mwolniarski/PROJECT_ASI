@@ -30,7 +30,7 @@ pipeline {
         stage('Cleanup') {
             steps {
                 script {
-                    sh 'docker rm -f kedro_docker'
+                    sh 'docker rm kedro_docker'
                 }
             }
         }
