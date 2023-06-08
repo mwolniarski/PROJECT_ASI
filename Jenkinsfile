@@ -18,7 +18,7 @@ pipeline {
                 script {
                     def container = docker.image('project_asi').run()
                     def containerIP = sh(script: "docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' ${container.id}", returnStdout: true).trim()
-                    sh "docker exec -it vigilant_lichterman ping ${containerIP}"
+                    sh "docker exec vigilant_lichterman ping ${containerIP}"
                 }
             }
         }
