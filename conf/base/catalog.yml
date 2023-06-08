@@ -42,6 +42,12 @@
 # This is a data set used by the "Hello World" example pipeline provided with the project
 # template. Please feel free to remove it once you remove the example pipeline.
 
-collegePlace:
+heart_failure:
   type: pandas.CSVDataSet
-  filepath: data/01_raw/collegePlace.csv
+  filepath: data/01_raw/heart_failure_clinical_records_dataset.csv
+
+heart_failure_model:
+  type: kedro_mlflow.io.artifacts.MlflowArtifactDataSet
+  data_set:
+    type: pickle.PickleDataSet
+    filepath: data/04_model/model.pkl

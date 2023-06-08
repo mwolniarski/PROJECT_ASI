@@ -13,7 +13,7 @@ def create_pipeline(**kwargs) -> Pipeline:
         [
             node(
                 func=prepare_data_for_modeling,
-                inputs="collegePlace",
+                inputs="heart_failure",
                 outputs="data_prepared_for_modeling",
                 name="prepare_data_node",
             ),

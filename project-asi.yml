@@ -1,0 +1,14 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: project-asi
+spec:
+  template:
+    metadata:
+      name: project-asi-pod
+    spec:
+      containers:
+      - name: project-asi
+        image: project_asi
+        imagePullPolicy: Always
+      restartPolicy: Never

@@ -1,0 +1,51 @@
+{
+    "os": "Windows-10-10.0.22621-SP0",
+    "python": "3.10.9",
+    "heartbeatAt": "2023-06-07T18:49:41.940337",
+    "startedAt": "2023-06-07T18:49:41.748586",
+    "docker": null,
+    "cuda": null,
+    "args": [
+        "run"
+    ],
+    "state": "running",
+    "program": "-m __main__",
+    "git": {
+        "remote": "https://github.com/mwolniarski/PROJECT_ASI.git",
+        "commit": "556e5c0b0505f1794bb6ffea595d976870d7b623"
+    },
+    "email": "wolniarskim@gmail.com",
+    "root": "C:/Users/Sprzetowo/Desktop/asi final/project_asi",
+    "host": "DESKTOP-J87P7FE",
+    "username": "Sprzetowo",
+    "executable": "C:\\Users\\Sprzetowo\\AppData\\Local\\Programs\\Python\\Python310\\python.exe",
+    "cpu_count": 4,
+    "cpu_count_logical": 8,
+    "cpu_freq": {
+        "current": 2400.0,
+        "min": 0.0,
+        "max": 2901.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 2400.0,
+            "min": 0.0,
+            "max": 2901.0
+        }
+    ],
+    "disk": {
+        "total": 476.10155868530273,
+        "used": 87.01575088500977
+    },
+    "gpu": "Quadro M1200",
+    "gpu_count": 1,
+    "gpu_devices": [
+        {
+            "name": "Quadro M1200",
+            "memory_total": 4294967296
+        }
+    ],
+    "memory": {
+        "total": 31.855308532714844
+    }
+}

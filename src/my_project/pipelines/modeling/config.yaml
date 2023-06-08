@@ -1,0 +1,13 @@
+program: sweep_params_in_yaml.py
+name: my-awesome-sweep
+method: bayes
+metric:
+  name: roc_auc
+  goal: maximize
+parameters:
+  n_estimators:
+    min: 50
+    max: 200
+  max_depth:
+    min: 3
+    max: 10
