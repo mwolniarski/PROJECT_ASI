@@ -22,7 +22,9 @@ pipeline {
         }
         stage('Remove container') {
             steps {
+                script {
                     docker.image('project_asi').remove()
+                }
             }
         }
     }
