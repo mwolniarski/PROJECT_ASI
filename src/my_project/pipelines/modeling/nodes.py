@@ -40,13 +40,12 @@ def split_data(df):
     return x_train, x_test, y_train, y_test
 def train_model(X_train, y_train):    
     pd.options.mode.chained_assignment = None
-
-    wandb.init(project="Heart failure", mode='offline', name='heart_failure')
     model = LogisticRegression(solver="liblinear")
     model.fit(X_train, y_train)
 
     return model
 def evaluate_model(model, X_test, y_test):
+    wandb.init(project="Heart failure", mode='offline', name='heart_failure')
     labels = y_test.unique()
     y_pred = model.predict(X_test)
     y_probas = model.predict_proba(X_test)[:, 1]
@@ -71,8 +70,8 @@ def evaluate_model(model, X_test, y_test):
     mlflow.log_artifact('data/03_prepared/heart_failure_prepared.csv')
     wandb.log_artifact(model_artifact)
 
-    mlflow.log_metric("accuracy", accuracy*100)
-    mlflow.log_metric("roc auc", roc_auc*100)
+    mlflow.log_metric("accuracy", accuracy)
+    mlflow.log_metric("roc auc", roc_auc)
     roc_auc_metric.set(roc_auc*100)
     accuracy_metric.set(accuracy*100)
     wandb.log({"ROC_AUC": roc_auc})

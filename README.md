@@ -134,3 +134,7 @@ Then edit catalog.yml file which contains all files used in our code
 >collegePlace:<br />
 &nbsp; type: pandas.CSVDataSet<br />
 &nbsp; filepath: data/01_raw/collegePlace.csv
+
+
+## Kedro viz
+![img.png](img.png)
