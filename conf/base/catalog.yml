@@ -42,9 +42,13 @@
 # This is a data set used by the "Hello World" example pipeline provided with the project
 # template. Please feel free to remove it once you remove the example pipeline.
 
-heart_failure:
+heart_failure_raw:
   type: pandas.CSVDataSet
-  filepath: data/01_raw/heart_failure_clinical_records_dataset.csv
+  filepath: data/01_raw/heart_failure.csv
+
+heart_failure_prepared:
+  type: pandas.CSVDataSet
+  filepath: data/03_prepared/heart_failure_prepared.csv
 
 heart_failure_model:
   type: kedro_mlflow.io.artifacts.MlflowArtifactDataSet

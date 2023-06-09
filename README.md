@@ -23,6 +23,11 @@ To install them, run:
 
 ```
 pip install -r src/requirements.txt
+pip install wandb
+pip install -U scikit-learn
+pip install wandb mlflow
+pip install --upgrade kedro-mlflow
+pip install dvc
 ```
 
 ## How to run your Kedro pipeline
