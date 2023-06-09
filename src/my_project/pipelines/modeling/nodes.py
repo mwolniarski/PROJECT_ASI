@@ -71,8 +71,8 @@ def evaluate_model(model, X_test, y_test):
     mlflow.log_artifact('data/03_prepared/heart_failure_prepared.csv')
     wandb.log_artifact(model_artifact)
 
-    mlflow.log_metric("accuracy", accuracy)
-    mlflow.log_metric("roc auc", roc_auc)
+    mlflow.log_metric("accuracy", accuracy*100)
+    mlflow.log_metric("roc auc", roc_auc*100)
     roc_auc_metric.set(roc_auc)
     accuracy_metric.set(accuracy)
     wandb.log({"ROC_AUC": roc_auc})
