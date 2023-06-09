@@ -73,8 +73,8 @@ def evaluate_model(model, X_test, y_test):
 
     mlflow.log_metric("accuracy", accuracy*100)
     mlflow.log_metric("roc auc", roc_auc*100)
-    roc_auc_metric.set(roc_auc)
-    accuracy_metric.set(accuracy)
+    roc_auc_metric.set(roc_auc*100)
+    accuracy_metric.set(accuracy*100)
     wandb.log({"ROC_AUC": roc_auc})
     wandb.log({"Accuracy": accuracy})
     print('ROC AUC: %.3f' % roc_auc)
