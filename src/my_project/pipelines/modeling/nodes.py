@@ -19,14 +19,12 @@ start_http_server(8000)
 roc_auc_metric = Gauge('wandb_roc_auc', 'ROC AUC')
 accuracy_metric = Gauge('wandb_accuracy', 'Accuracy metric from Wandb')
 def prepare_data_for_modeling(df):
-    # Suppress "a copy of slice from a DataFrame is being made" warning
     pd.options.mode.chained_assignment = None
 
     features = df.columns[1:-1]
     x = df[features]
     y = df['DEATH_EVENT']
 
-    #create a dataframe with the features and the labels
     data_prepared = pd.concat([x, y], axis=1)
     return data_prepared
 
